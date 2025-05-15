@@ -107,7 +107,7 @@ public class StudentManagement {
         }
     }
 
-    public static void main(String[] args) {
+    public static void promptStudentMainMenu() {
         StudentManagement sm = new StudentManagement();
         sm.loadSampleStudents();
         sm.displayStudentMenu();

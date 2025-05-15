@@ -1,4 +1,6 @@
 import javax.swing.JOptionPane;
+
+import book_system.BookManagement;
 import student_system.StudentManagement;
 
 public class StudentLibrary {
@@ -17,8 +19,8 @@ public class StudentLibrary {
 
         int option = Integer.parseInt(enteredNumberForMainMenu);
         switch(option) {
-            case 1:         StudentManagement.main(args);
-            // case 2: BookManagement.
+            case 1: StudentManagement.promptStudentMainMenu();
+            case 2: BookManagement.promptBookMainMenu();
         }
 
     }

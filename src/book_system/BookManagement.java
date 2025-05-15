@@ -60,6 +60,7 @@ public class BookManagement {
         do {
             try {
                 priceInput = Double.parseDouble(JOptionPane.showInputDialog(null, "Enter the new book price: ", "Input", JOptionPane.QUESTION_MESSAGE));
+                isErrorParsing = false;
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Only numbers and decimals are allowed for book price.", "Error", JOptionPane.ERROR_MESSAGE);
                 isErrorParsing = true;
@@ -82,5 +83,38 @@ public class BookManagement {
             totalCost += book.getPrice();
         }
         JOptionPane.showMessageDialog(null, String.format("Total book cost is $%.2f", totalCost), "Message", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public static void promptBookMainMenu() {
+        String bookMainMenuPrompt = "Enter your option:\n" +
+                "\n1. Display all books" +
+                "\n2. Search book by title" +
+                "\n3. Add new book" +
+                "\n4. Display total books costs" +
+                "\n5. Exit";
+
+        int mainMenuOptionInput;
+        boolean isErrorParsing = false;
+
+        do {
+                mainMenuOptionInput = Integer.parseInt(JOptionPane.showInputDialog(null, bookMainMenuPrompt, "Main Library System - Book Management", JOptionPane.QUESTION_MESSAGE));
+            try {
+                switch (mainMenuOptionInput) {
+                    case 1 -> displayAllBooks();
+                    case 2 -> searchBookByTitle();
+                    case 3 -> addNewBook();
+                    case 4 -> displayTotalBookCost();
+                    default -> {
+                        JOptionPane.showMessageDialog(null, "Please enter a valid option.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Only numbers are allowed.", "Error", JOptionPane.ERROR_MESSAGE);
+                isErrorParsing = true;
+            }
+
+        } while (mainMenuOptionInput != 5 || isErrorParsing);
+
+
     }
 }
